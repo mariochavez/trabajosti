@@ -7,10 +7,11 @@ feature "Publicar Un Nuevo Trabajo", %q{
 } do
 
   scenario "En la pagina principal al hacer 'clic' en 'Nueva Oferta' se debe de mostrar la forma para la informacion de la oferta" do
+    visit homepage
     click_link_or_button 'Nueva oferta'
 
     should_be_on new_job
-    page.should hace_css 'h1', :text => 'Paso 1: Crear oferta'
+    page.should have_css 'h1', :text => 'Paso 1: Crear oferta'
 
     within :css, 'form' do
       have_the_following(

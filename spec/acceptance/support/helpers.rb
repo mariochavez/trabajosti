@@ -7,7 +7,7 @@ module HelperMethods
     current_path.should != path
   end
 
-  def have_the_following(fields=[])
+  def have_the_following(*fields)
     fields.each do |field|
      page.should have_css field 
     end
