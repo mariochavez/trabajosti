@@ -1,0 +1,14 @@
+%h1 Paso 2: Vista previa de la oferta 
+%h1
+  = @job.title
+%h2
+  = @job.company_name
+  %span
+    = @job.url
+%h3
+  = @job.location
+%div
+  = @job.description
+%div
+  = @job.contact
+= link_to 'Paso 3: publicar oferta', '#'

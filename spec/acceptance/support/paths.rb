@@ -9,8 +9,8 @@ module NavigationHelpers
     "/jobs/new"
   end
 
-  def preview_job
-    '/jobs/preview'
+  def preview_job(id)
+    "/jobs/#{id}"
   end
 end
 

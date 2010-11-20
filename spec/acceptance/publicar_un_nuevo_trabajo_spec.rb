@@ -48,7 +48,6 @@ feature "Publicar Un Nuevo Trabajo", %q{
 
     job = Factory.build :job
 
-
     fill_the_following(
       'job_title' => job.title,
       'job_category' => job.category,
@@ -62,12 +61,15 @@ feature "Publicar Un Nuevo Trabajo", %q{
 
     click_link_or_button 'Paso 2: ver la oferta'
 
-    should_be_on preview_job
-    page.should hace_css 'h1', :text => 'Paso 2: Vista previa de la oderta'
+    should_be_on preview_job 1
+    page.should have_css 'h1', :text => 'Paso 2: Vista previa de la oferta'
     page.should have_css 'h1', :text => job.title
-    page.should have_css 'h2', :text => job.company
+    page.should have_css 'h2', :text => job.company_name
+    page.should have_css 'span', :text => job.url
     page.should have_css 'h3', :text => job.location
+    page.should have_css 'div', :text => job.description
+    page.should have_css 'div', :text => job.contact
 
-    page.shoud have_css 'input', :text => 'Paso 3: publicar oferta'
+    page.should have_css 'a', :text => 'Paso 3: publicar oferta'
   end
 end
