@@ -1,4 +1,4 @@
 class JobsController < InheritedResources::Base
-  actions :new, :create
+  actions :new, :create, :show
 
 end

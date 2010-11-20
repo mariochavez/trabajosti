@@ -47,15 +47,17 @@ feature "Publicar Un Nuevo Trabajo", %q{
     visit new_job
 
     job = Factory.build :job
+
+
     fill_the_following(
-      '#job_title' => job.title,
-      '#job_category' => job.category,
-      '#job_location' => job.location,
-      '#job_description' => job.description,
-      '#job_contact' => job.contact,
-      '#job_company_name' => job.company_name,
-      '#job_url' => job.url,
-      '#job_email' => job.email
+      'job_title' => job.title,
+      'job_category' => job.category,
+      'job_location' => job.location,
+      'job_description' => job.description,
+      'job_contact' => job.contact,
+      'job_company_name' => job.company_name,
+      'job_url' => job.url,
+      'job_email' => job.email
     )
 
     click_link_or_button 'Paso 2: ver la oferta'

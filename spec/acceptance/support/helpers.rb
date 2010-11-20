@@ -20,7 +20,7 @@ module HelperMethods
   end
 
   def should_have_errors(*messages)
-    within(:css, "#error_explanation") do
+    within(:css, "form") do
       messages.each { |msg| page.should have_content(msg) }
     end
   end
