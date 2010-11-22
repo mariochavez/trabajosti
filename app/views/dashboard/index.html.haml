@@ -1,3 +1,4 @@
 %h1 Dashboard#index
+%div #{flash[:error]||flash[:notice]}
 %p Find me in app/views/dashboard/index.html.haml
 = link_to 'Nueva oferta', new_job_path

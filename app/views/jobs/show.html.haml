@@ -11,4 +11,7 @@
   = @job.description
 %div
   = @job.contact
-= link_to 'Paso 3: publicar oferta', '#'
+= simple_form_for(@job, :url => publish_job_path(@job)) do |f|
+  = f.button :submit, 'Paso 3: publicar oferta'
+o
+= link_to 'Realizar cambios', edit_job_path(@job)

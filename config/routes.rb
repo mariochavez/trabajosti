@@ -1,5 +1,11 @@
 Jobs::Application.routes.draw do
-  resources :jobs #, :only => [ :new, :create ]
+  match 'jobs/:id/edit/:token' => 'jobs#edit', :as => :edit_published_job
+  resources :jobs do
+    member do
+      put :publish    
+    end
+
+  end
 
   get "dashboard/index"
 

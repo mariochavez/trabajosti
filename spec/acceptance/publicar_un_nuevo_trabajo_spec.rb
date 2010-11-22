@@ -61,7 +61,8 @@ feature "Publicar Un Nuevo Trabajo", %q{
 
     click_link_or_button 'Paso 2: ver la oferta'
 
-    should_be_on preview_job 1
+    job = Job.last
+    should_be_on preview_job job.id
     page.should have_css 'h1', :text => 'Paso 2: Vista previa de la oferta'
     page.should have_css 'h1', :text => job.title
     page.should have_css 'h2', :text => job.company_name
@@ -70,6 +71,86 @@ feature "Publicar Un Nuevo Trabajo", %q{
     page.should have_css 'div', :text => job.description
     page.should have_css 'div', :text => job.contact
 
-    page.should have_css 'a', :text => 'Paso 3: publicar oferta'
+    page.should have_css 'input[type="submit"]'
+    page.should have_css 'a', :text => 'Realizar cambios'
+  end
+
+  scenario "Modificar oferta despues de verla en Vista previa" do
+    job = create_and_preview_a_job!
+
+    click_link_or_button 'Realizar cambios'
+
+    should_be_on edit_job job.id
+
+    page.should have_css 'h1', :text => 'Paso 1: Crear oferta'
+    within :css, 'form' do
+      have_the_following(
+        '#job_title',
+        '#job_category',
+        '#job_location',
+        '#job_description',
+        '#job_contact',
+        '#job_company_name',
+        '#job_logo',
+        '#job_url',
+        '#job_email'
+      )
+    end
+  end
+
+  scenario "Ver la oferta en vista previa, despues de modificarla" do
+    job = create_and_edit_a_job!
+
+    click_link_or_button 'Paso 2: ver la oferta'
+
+    should_be_on preview_job job.id
+  end
+
+  scenario "Publicar oferta y recibir confirmacion de tiempo y token para edicion" do
+    job = create_and_preview_a_job!
+
+    click_link_or_button 'Paso 3: publicar oferta'
+    job = Job.find job.id
+
+    should_be_on publish_job job.id
+
+    page.should have_css('h1', :text => job.title)
+
+    expire_date = job.created_at + (3600 * 24 * 30)
+    page.should have_css('h3', :text => 'Expira en 30 dias: ' + expire_date.to_s(:short)) 
+    
+    page.should have_css('h2', :text => 'Para modificar su oferta, guarde el siguiente token ' + job.token)
+    
+    page.should have_css('p', :text => 'Utilice la siguiente liga para hacer modificaciones a su oferta')
+    
+    page.should have_css('a', :text => job.token)
+    page.should have_css('a', :text => 'Regresar al listado de ofertas')
+  end
+
+  scenario "No es posible modificar una oferta ya publicada sin el token" do
+    job = publish_a_job
+    
+    visit edit_job job.id
+
+    should_be_on homepage
+    page.should have_css('div', :text => 'Esta oferta ya fué publicada, para modificarla use el token que se le asignó al publicarla')
+  end
+
+  scenario "No es posible modificar una oferta ya publicada sin el token correcto" do
+    job = publish_a_job
+    
+    visit edit_published_job job.id, 'token_invalido'
+
+    should_be_on homepage
+    page.should have_css('div', :text => 'Esta oferta ya fué publicada, para modificarla use el token que se le asignó al publicarla')
+  end
+
+  scenario "Modificar oferta publicada con el token correcto" do
+    job = publish_a_job
+    
+    visit edit_published_job job.id, job.token
+    click_link_or_button 'Actualizar oferta'
+    should_be_on homepage
+    page.should have_css('div', :text => 'Su oferta ha sido actualizada')
   end
 end

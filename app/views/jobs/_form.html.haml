@@ -9,5 +9,8 @@
   = f.input :url
   = f.input :email
 
-  = f.button :submit, 'Paso 2: ver la oferta'
+  - if !@job.token.nil?
+    = f.button :submit, 'Actualizar oferta'
+  - else
+    = f.button :submit, 'Paso 2: ver la oferta'
 

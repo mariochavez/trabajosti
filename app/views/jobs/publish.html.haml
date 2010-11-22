@@ -1,0 +1,7 @@
+%h1
+  = @job.title
+%h3 Expira en 30 dias: #{get_expiration_date @job}
+%h2 Para modificar su oferta, guarde el siguiente token #{@job.token}
+%p Utilice la siguiente liga para hacer modificaciones a su oferta
+= link_to edit_published_job_url(@job, @job.token), edit_published_job_url(@job, @job.token)
+= link_to 'Regresar al listado de ofertas', root_path
