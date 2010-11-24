@@ -7,9 +7,11 @@ Jobs::Application.routes.draw do
 
   end
 
-  get "dashboard/index"
-
   root :to => "dashboard#index"
+
+  get "dashboard/index"
+  match 'all' => 'dashboard#all'
+  match ':id' => 'dashboard#show', :as => :dashboard
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

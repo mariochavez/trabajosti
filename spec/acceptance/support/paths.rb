@@ -24,6 +24,14 @@ module NavigationHelpers
   def edit_published_job(id, token)
     "/jobs/#{id}/edit/#{token}"
   end
+
+  def all_job_offers
+    "/all"
+  end
+
+  def show_offer(id)
+    "/#{id}"
+  end
 end
 
 RSpec.configuration.include NavigationHelpers, :type => :acceptance

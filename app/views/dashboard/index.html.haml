@@ -1,4 +1,13 @@
-%h1 Dashboard#index
+%h1 
+  - if @action == 'all'
+    Todas las ofertas dispoibles 
+  - else
+    Ofertas recientes
 %div #{flash[:error]||flash[:notice]}
-%p Find me in app/views/dashboard/index.html.haml
 = link_to 'Nueva oferta', new_job_path
+%ul
+  = render @jobs
+- if @action == 'all'
+  = link_to "Regresar a página principal", root_path
+- else
+  = link_to "Ver todas las #{@total} ofertas", all_path

@@ -20,4 +20,17 @@ module HelperMethods
     job.publish!
     job
   end
+
+  def create_and_publish_40_jobs!
+    40.times do
+      job = Factory.create :job
+      job.publish!
+    end
+  end
+
+  def create_40_jobs!
+    40.times do
+      job = Factory.create :job
+    end
+  end
 end

@@ -1,0 +1,13 @@
+%h1
+  = @job.title
+%h2
+  = @job.company_name
+  %span
+    = @job.url
+%h3
+  = @job.location
+%div
+  = @job.description
+%div
+  = @job.contact
+= link_to 'Regresar a ofertas', root_path
