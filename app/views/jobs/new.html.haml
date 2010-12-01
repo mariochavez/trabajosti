@@ -1,2 +1,18 @@
-%h1 Paso 1: Crear oferta
+- content_for :header do
+  .column
+    %h1 Paso 1: Crear oferta
+  .column-right
+    %ul.steps
+      %li.step1_on
+      %li.step2_off
+      %li.step3_off
+%h2 ¿De que se trata la oferta?
 = render 'form'
+
+- content_for :sidebar do
+  %h3 ¿Porqué publicar una oferta en empleosTI?
+  %p empleosTI es un servicio enfocado exlusivamente a ofertas de trabajo relacionadas con el mundo TI de habla hispana.
+  %p Por lo tanto si su oferta requiere de encontrar profesionales en TI, este es el lugar adecuado, ya que su oferta no se mezclará con ofertas de otro tipo de trabajos.
+  %p Además, 
+    %span.blue empleosTI
+    es gratis para consultar y publicar ofertas, y no se require registrarse!

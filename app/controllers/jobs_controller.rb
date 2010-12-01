@@ -27,10 +27,10 @@ class JobsController < InheritedResources::Base
   def publish
     @job = Job.find params[:id]  
 
-    if !@job.token.nil?
-      flash[:error] = 'Esta oferta ya fué publicada y no es posible publicarla nuevamente'
-      return redirect_to root_path
-    end
+#    if !@job.token.nil?
+#      flash[:error] = 'Esta oferta ya fué publicada y no es posible publicarla nuevamente'
+#      return redirect_to root_path
+#    end
 
     @job.publish!
   end

@@ -1,0 +1,11 @@
+%ul 
+  %li
+    = mail_to '', image_tag('email-icon.png') + " Enviar a un amigo", :subject => "[empleosTI]: #{@job.title}", :body => "#{@job.title} en #{dashboard_url(@job)}" 
+  %li
+    = link_to 'Tweet', 'http://twitter.com/share', :class => 'twitter-share-button', 'data-url' => dashboard_url(@job), 'data-text' => 'empleosti Oferta', 'data-count' => 'none', 'data-via' => 'decisionesin', 'data-lang' => 'es'
+  %li
+    = link_to '', '', :share_url => dashboard_url(@job), :name => 'fb_share', :type => 'button'
+
+= javascript_include_tag 'http://platform.twitter.com/widgets.js'
+= javascript_include_tag 'http://static.ak.fbcdn.net/connect.php/js/FB.Share'
+

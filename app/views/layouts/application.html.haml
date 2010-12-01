@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %title Trabajos TI - Decisiones Inteligentes
+    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'application.less', :rel => "stylesheet/less"
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body
+    #header
+      .content
+        .column
+          #logo
+            = image_tag 'empleosTI.png'
+        .column-right
+          #note
+            La mejor opción para encontrar ese trabajo especial
+    #page-top
+      #page
+        .content
+          - if content_for? :header
+            .header
+              = content_for :header
+            .clear
+          = yield
+          - if content_for? :sidebar
+            #sidebar
+              = content_for :sidebar
+      #footer
+        %span.blue empleosTI es un servicio de #{link_to 'Decisiones Inteligentes', 'http://www.decisionesinteligentes.com'}

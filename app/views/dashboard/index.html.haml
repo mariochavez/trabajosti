@@ -1,11 +1,18 @@
-%h1 
-  - if @action == 'all'
-    Todas las ofertas dispoibles 
-  - else
-    Ofertas recientes
+- content_for :header do
+  .column-mini
+    %h1 
+      - if @action == 'all'
+        Todas las ofertas dispoibles 
+      - else
+        Ofertas recientes
+      %small
+        publicadas
+        = time_ago_in_words @jobs.first.created_at
+  .column-mini-right
+    = link_to 'Nueva oferta', new_job_path, :class => 'awesome large blue'
+  .clear
 %div #{flash[:error]||flash[:notice]}
-= link_to 'Nueva oferta', new_job_path
-%ul
+%ul.listing
   = render @jobs
 - if @action == 'all'
   = link_to "Regresar a página principal", root_path

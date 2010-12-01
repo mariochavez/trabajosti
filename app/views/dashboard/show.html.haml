@@ -1,13 +1,24 @@
-%h1
-  = @job.title
-%h2
-  = @job.company_name
+- content_for :header do
+  .column-mini
+    %h1 #{@job.title}
+  .column-mini-right
+    = link_to 'Ver ofertas', root_path, :class => 'awesome large blue'
+  .clear
+#preview
+  %h2 #{@job.company_name}
+  %h3
+    Ubicación:
+    = @job.location
   %span
-    = @job.url
-%h3
-  = @job.location
-%div
-  = @job.description
-%div
-  = @job.contact
+    = link_to @job.url, @job.url
+  #description
+    = @job.description
+  .contact
+    = @job.contact
+
+- content_for :sidebar do
+  %h3 Compartir oferta
+  %p Comparta esta oferta con sus amigos en las siguientes redes sociales.
+  = render "shared/connect"
+
 = link_to 'Regresar a ofertas', root_path

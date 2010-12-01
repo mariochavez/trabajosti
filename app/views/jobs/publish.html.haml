@@ -1,7 +1,32 @@
+- content_for :header do
+  .column
+    %h1 Paso 3: Oferta publicada
+  .column-right
+    %ul.steps
+      %li.step1_off
+      %li.step2_off
+      %li.step3_on
 %h1
   = @job.title
-%h3 Expira en 30 dias: #{get_expiration_date @job}
-%h2 Para modificar su oferta, guarde el siguiente token #{@job.token}
-%p Utilice la siguiente liga para hacer modificaciones a su oferta
-= link_to edit_published_job_url(@job, @job.token), edit_published_job_url(@job, @job.token)
+%h3 Expira en 30 días: #{get_expiration_date @job}
+%p 
+  Un correo electrónico a la dirección #{@job.email} 
+  %br/
+  fué enviado con estas mismas instrucciones.
+%p Para visualizar su oferta utilice el siguiente vínculo #{link_to @job.title, dashboard_path(@job)}  
+%p Para promover su oferta, haga uso de las herramientas a redes sociales de la barra de la derecha.
+%br/
+%br/
+%br/
+%br/
+%h2.contact 
+  Para modificar su oferta, guarde el siguiente vínculo, ya que sin el no le será posible realizar cambios:
+  %br/
+  = link_to edit_published_job_url(@job, @job.token), edit_published_job_url(@job, @job.token)
+%h3 Suerte en la búsqueda de personal.
 = link_to 'Regresar al listado de ofertas', root_path
+
+- content_for :sidebar do
+  %h3 Promocionar la oferta
+  %p Promocione su oferta en las siguientes redes sociales.
+  = render "shared/connect"

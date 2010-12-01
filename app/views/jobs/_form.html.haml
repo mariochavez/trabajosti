@@ -1,16 +1,12 @@
 = simple_form_for @job do |f|
-  = f.input :title
+  = f.input :title, :hint => '"Desarrollador Sr." o "Administrador de sistemas"'
   = f.input :category
-  = f.input :location
+  = f.input :location, :hint => '"Tijuana, México" o "Buenos Aires, Argentina"'
   = f.input :description
-  = f.input :contact
+  = f.input :contact, :hint => 'Ej: Enviar CV a trabajos@empresa.com'
   = f.input :company_name
   = f.input :logo
-  = f.input :url
-  = f.input :email
+  = f.input :url, :hint => 'Ej: http://www.miempresa.com.mx'
+  = f.input :email, :hint => 'Dirección de correo válida donde recibir confirmación de publicación de la oferta'
 
-  - if !@job.token.nil?
-    = f.button :submit, 'Actualizar oferta'
-  - else
-    = f.button :submit, 'Paso 2: ver la oferta'
-
+  = f.button :submit, !@job.token.nil? ? 'Actualizar oferta' : 'Paso 2: ver la oferta', :class => 'awesome large button'

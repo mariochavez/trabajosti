@@ -1,2 +1,8 @@
 %li{ id = "#{job.id}" } 
-  = link_to "#{job.location} #{job.title} en #{job.company_name}", dashboard_path(job)
+  = link_to dashboard_path(job) do
+    %span.location #{job.location}
+    %span.title #{job.title} 
+    %span.dark en 
+    %span.blue #{job.company_name}
+    %span{:style => 'float: right;'}
+      %small #{job.created_at.to_s(:simple)}
