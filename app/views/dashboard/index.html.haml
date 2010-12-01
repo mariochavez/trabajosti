@@ -5,9 +5,10 @@
         Todas las ofertas dispoibles 
       - else
         Ofertas recientes
-      %small
-        publicadas
-        = time_ago_in_words @jobs.first.created_at
+      -if !@jobs.empty?
+        %small
+          publicadas
+          = time_ago_in_words @jobs.first.created_at
   .column-mini-right
     = link_to 'Nueva oferta', new_job_path, :class => 'awesome large blue'
   .clear
