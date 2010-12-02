@@ -106,7 +106,6 @@ feature "Publicar Un Nuevo Trabajo", %q{
 
   scenario "Publicar oferta y recibir confirmacion de tiempo y token para edicion" do
     job = create_and_preview_a_job!
-    save_and_open_page
 
     click_link_or_button 'Paso 3: publicar oferta'
     job = Job.find job.id

@@ -1,4 +1,5 @@
 = simple_form_for @job do |f|
+  = f.hidden_field :token
   = f.input :title, :hint => '"Desarrollador Sr." o "Administrador de sistemas"'
   = f.input :category
   = f.input :location, :hint => '"Tijuana, México" o "Buenos Aires, Argentina"'
@@ -9,4 +10,4 @@
   = f.input :url, :hint => 'Ej: http://www.miempresa.com.mx'
   = f.input :email, :hint => 'Dirección de correo válida donde recibir confirmación de publicación de la oferta'
 
-  = f.button :submit, @job.published? ? 'Actualizar oferta' : 'Paso 2: ver la oferta', :class => 'awesome large button'
+  = f.button :submit, @job.published ? 'Actualizar oferta' : 'Paso 2: ver la oferta', :class => 'awesome large button'

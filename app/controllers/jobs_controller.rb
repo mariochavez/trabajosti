@@ -9,8 +9,9 @@ class JobsController < InheritedResources::Base
 
   def show
     @job = Job.find params[:id]
+    token = params[:token]
 
-    if !valid_token?
+    if !valid_token? token
       flash[:error] = 'No es posible previsualizar esta oferta sin el token correcto'
       return redirect_to root_path
     end
@@ -20,9 +21,10 @@ class JobsController < InheritedResources::Base
 
   def edit
     @job = Job.find params[:id]
+    token = params[:token]
 
-    if !valid_token?
-      if @job.published?
+    if !valid_token? token
+      if @job.published
         flash[:error] = 'Esta oferta ya fué publicada, para modificarla use el token que se le asignó al publicarla'
       else
         flash[:error] = 'No es posible modificar esta oferta sin el token correcto'
@@ -34,10 +36,17 @@ class JobsController < InheritedResources::Base
   end
 
   def update
+    @job = Job.find params[:id]
+    token = params[:job][:token]
+
+    if !valid_token? token
+      flash[:error] = 'No es posible actualizar la oferta sin el token correcto'
+      return redirect_to root_path
+    end
     
     update! do |success, failure| 
       success.html {
-        if @job.published?
+        if @job.published
           flash[:notice] = 'Su oferta ha sido actualizada'
           return redirect_to root_path
         else
@@ -50,7 +59,7 @@ class JobsController < InheritedResources::Base
   def publish
     @job = Job.find params[:id]  
 
-    if @job.published?
+    if @job.published
       flash[:error] = 'Esta oferta ya fué publicada y no es posible publicarla nuevamente'
       return redirect_to root_path
     end
@@ -59,8 +68,8 @@ class JobsController < InheritedResources::Base
   end
 
   private
-  def valid_token?
-    return true if @job.token == params[:token]
+  def valid_token? token
+    return true if @job.token == token
     false
   end
 end
