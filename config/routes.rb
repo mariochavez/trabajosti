@@ -1,11 +1,13 @@
 Jobs::Application.routes.draw do
-  match 'jobs/:id/edit/:token' => 'jobs#edit', :as => :edit_published_job
-  resources :jobs do
+
+  resources :jobs do {:except => [ :edit, :show ]}
     member do
       put :publish    
     end
-
   end
+
+  match 'jobs/:id/edit/:token' => 'jobs#edit', :as => :edit_job
+  match 'jobs/:id/:token' => 'jobs#show', :as => :show_job
 
   root :to => "dashboard#index"
 

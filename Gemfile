@@ -14,11 +14,12 @@ group :development do
   gem 'rails3-generators'
   gem 'haml-rails'
   gem 'jquery-rails'
+  gem 'ruby-debug'
 end
 
 group :test, :development do
-  gem 'rspec', '>=2.0.1'
-  gem 'rspec-rails', '>=2.0.1'
+  gem 'rspec', '>=2.2.0'
+  gem 'rspec-rails', '>=2.2.0'
   gem 'remarkable_activerecord'
   gem 'factory_girl_rails'
   gem 'steak', '>= 1.0.0.rc.3'

@@ -2,7 +2,7 @@ module HelperMethods
   def create_and_preview_a_job!
     job = Factory.create :job
   
-    visit preview_job job.id
+    visit preview_job job.id, job.token
   
     job
   end
@@ -10,7 +10,7 @@ module HelperMethods
   def create_and_edit_a_job!
     job = Factory.create :job
 
-    visit edit_job job.id
+    visit edit_job job.id, job.token 
 
     job
   end

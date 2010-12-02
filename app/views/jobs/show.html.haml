@@ -21,7 +21,7 @@
   .contact
     = @job.contact
   = simple_form_for(@job, :url => publish_job_path(@job)) do |f|
-    #{f.button :submit, 'Paso 3: publicar oferta', :class => 'awesome large button'} o #{link_to 'Realizar cambios', edit_job_path(@job)}
+    #{f.button :submit, 'Paso 3: publicar oferta', :class => 'awesome large button'} o #{link_to 'Realizar cambios', edit_job_path(@job, @job.token || @job.edit_token)}
 
 - content_for :sidebar do
   %h3 Vista previa

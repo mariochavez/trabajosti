@@ -20,13 +20,20 @@ describe Job do
   it { should validate_presence_of :description, :message => 'Por favor indique una descripción' }
   it { should validate_presence_of :contact, :message => 'Por favor indique como recibir contacto por la oferta' }
   it { should validate_presence_of :email, :message => 'Por favor indique su dirección de correo electrónico' }
+  it { should validate_presence_of :company_name, :message => 'Por favor indique el nombre de la compañía' }
 
 
-  it { should have_columns :title, :company_name, :url, :location, :description, :contact, :logo, :token }
+  it { should have_columns :title, :company_name, :url, :location, :description, :contact, :logo, :token, :published}
 
-  describe "Generar token para ofertar publicadas" do
+  describe "Publicar oferta marcandolas como publicadas" do
     job = Factory.create :job
     job.publish!
+    job.published.should == true
+  end
+
+  describe "Generar token de edicion para ofertas nuevas" do
+    job = Factory.create :job
+    job.save
     job.token.should_not == nil
   end
 
@@ -40,7 +47,7 @@ describe Job do
 
   describe "Leer el resto de las ofertas" do
     Job.delete_all
-    HelperMethods.create_and_publish_40_jobs!
+    create_and_publish_40_jobs!
 
     jobs = Job.latest.all
     jobs.count.should == 40

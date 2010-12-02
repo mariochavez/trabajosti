@@ -1,4 +1,6 @@
 class Job < ActiveRecord::Base
+  before_create :set_edit_token
+
   validates_presence_of :title, :message => 'Por favor indique un título'
   validates_presence_of :location, :message => 'Por favor indique la ubicación'
   validates_presence_of :description, :message => 'Por favor indique una descripción'
@@ -7,14 +9,17 @@ class Job < ActiveRecord::Base
 
   validates_presence_of :company_name, :message => 'Por favor indique el nombre de la compañía'
 
-  scope :latest, where('token is not null').where('created_at >= ?', Date.today - 30).order('created_at desc')
+  scope :latest, where(:published => true).where('created_at >= ?', Date.today - 30).order('created_at desc')
 
   scope :limited, limit(20)
 
   def publish!
-    return if self.new_record?
-    self.token = ActiveSupport::SecureRandom.base64(32).gsub("/","_").gsub(/=+$/,"")  
-
+    self.published = true
     self.save
+  end
+
+  private
+  def set_edit_token
+    self.token = ActiveSupport::SecureRandom.base64(32).gsub("/","_").gsub(/=+$/,"")
   end
 end

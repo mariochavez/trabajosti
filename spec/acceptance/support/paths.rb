@@ -9,20 +9,16 @@ module NavigationHelpers
     "/jobs/new"
   end
 
-  def preview_job(id)
-    "/jobs/#{id}"
+  def preview_job(id, token)
+    "/jobs/#{id}/#{token}"
   end
 
-  def edit_job(id)
-    "/jobs/#{id}/edit"
+  def edit_job(id, token)
+    "/jobs/#{id}/edit/#{token}"
   end
 
   def publish_job(id)
     "/jobs/#{id}/publish"
-  end
-
-  def edit_published_job(id, token)
-    "/jobs/#{id}/edit/#{token}"
   end
 
   def all_job_offers
