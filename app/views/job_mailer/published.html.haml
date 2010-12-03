@@ -1,0 +1,28 @@
+%h1 Bienvenido
+%p 
+  Gracias por usar
+  = link_to 'empleosTI', 'http://empleosti.decisionesinteligentes.com'
+  para publictar su oferta de trabajo.
+%p
+  La oferta 
+  %b #{@job.title} 
+  ya fué publicada y estará activa por los próximos 30 días.
+%p
+  Para visualizar la oferta haga 'click' 
+  = link_to 'aquí', dashboard_url(@job.id)
+%p
+  Para modificar la oferta, haga 'click'
+  = link_to 'aquí', edit_job_url(@job, @job.token)
+%p
+  Le deseamos suerte en la búsqueda de personal talentoso y gracias nuevamente por utilizar éste servicio.
+%br/
+%h3
+  El equipo de
+  = link_to 'empleosTI', root_url
+%br/
+%p
+  %b empleosTI 
+  es un servicio de 
+  %br/
+  = link_to 'http://www.decisionesinteligentes.com' do
+    %img{:src => 'http://dl.dropbox.com/u/3609069/images/mini-dein2.png', :width => '200px'}

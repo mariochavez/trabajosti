@@ -1,0 +1,44 @@
+%html
+  %head
+    %style{:type => "text/css" }
+      :plain
+        body {
+          background-color: #eee; 
+          color: #555;
+        }
+        table {
+          border: 1px solid #ccc; 
+          width: 700px; 
+          margin: 0px auto; 
+          background-color: #fff; 
+          padding: 30px;
+        }
+        a {
+          color: #99c027;
+        }
+        b {
+          color: #208bb5;
+        }
+        h1 {
+          color: #99c027;
+        }
+        h3 {
+          color: #208bb5;
+          font-size: 12px;
+        }
+        #logo {
+          background: url(http://dl.dropbox.com/u/3609069/images/empleosTI.png) no-repeat; 
+          height: 60px; 
+          width: 222px;
+        }
+  %body
+    %table
+      %tr
+        %td
+          = link_to 'http://empleosti.decisionesinteligentes.com' do
+            #logo
+        %td 
+          %h3 La mejor opción para encontrar ese trabajo especial
+      %tr
+        %td{:colspan => "2"}
+          = yield

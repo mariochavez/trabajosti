@@ -9,12 +9,14 @@ gem 'inherited_resources'
 gem 'hpricot'
 gem 'ruby_parser'
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'twitter', '>= 1.0.0'
 
 group :development do
   gem 'rails3-generators'
   gem 'haml-rails'
   gem 'jquery-rails'
   gem 'ruby-debug'
+  gem 'twitter_oauth'
 end
 
 group :test, :development do
