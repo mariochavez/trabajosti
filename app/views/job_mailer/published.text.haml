@@ -1,0 +1,19 @@
+= "Gracias por usar empleosTI para publicitar su oferta."
+:preserve
+    
+= "La oferta #{@job.title} ya fue publicada y estará activa por los próximos 30 días."
+:preserve
+    
+= "Para visualizarla utilice el siguiente vínculo: #{dashboard_url(@job.id)}"
+:preserve
+    
+= "Si lo que desea es modificarla, entonces utilice éste vínculo: #{edit_job_url(@job, @job.token)}"
+:preserve
+    
+= "Gracias una vez más por hacer uso de este servicio."
+:preserve
+    
+= "empleosTI #{root_url}"
+:preserve
+    
+= "empleosTI es un servicio de Decisiones Inteligentes http://www.decisionesinteligentes.com"

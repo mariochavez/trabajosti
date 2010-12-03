@@ -64,6 +64,8 @@ class JobsController < InheritedResources::Base
       return redirect_to root_path
     end
 
+    puts '=============================='
+    JobMailer.published(@job).deliver
     @job.publish!
   end
 

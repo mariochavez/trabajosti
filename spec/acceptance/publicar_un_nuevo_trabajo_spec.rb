@@ -35,6 +35,7 @@ feature "Publicar Un Nuevo Trabajo", %q{
 
     should_have_errors(
       'Por favor indique un título',
+      'Por favor seleccione una categoría',
       'Por favor indique la ubicación',
       'Por favor indique una descripción',
       'Por favor indique como recibir contacto por la oferta',
@@ -50,7 +51,6 @@ feature "Publicar Un Nuevo Trabajo", %q{
 
     fill_the_following(
       'job_title' => job.title,
-      'job_category' => job.category,
       'job_location' => job.location,
       'job_description' => job.description,
       'job_contact' => job.contact,
@@ -59,12 +59,15 @@ feature "Publicar Un Nuevo Trabajo", %q{
       'job_email' => job.email
     )
 
+    select 'Programación', :from => 'job_category'
+
     click_link_or_button 'Paso 2: ver la oferta'
 
     job = Job.last
 
     page.should have_css 'h1', :text => 'Paso 2: Vista previa de la oferta'
     page.should have_css 'h1', :text => job.title
+    page.should have_css 'h3', :text => 'Programación'
     page.should have_css 'h2', :text => job.company_name
     page.should have_css 'span', :text => job.url
     page.should have_css 'h3', :text => job.location

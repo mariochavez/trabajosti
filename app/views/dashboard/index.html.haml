@@ -18,4 +18,5 @@
 - if @action == 'all'
   = link_to "Regresar a página principal", root_path
 - else
-  = link_to "Ver todas las #{@total} ofertas", all_path
+  - if @total > 20
+    = link_to "Ver todas las #{@total} ofertas", all_path

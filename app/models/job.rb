@@ -9,6 +9,8 @@ class Job < ActiveRecord::Base
 
   validates_presence_of :company_name, :message => 'Por favor indique el nombre de la compañía'
 
+  validates_numericality_of :category, :greater_than => 0, :message => 'Por favor seleccione una categoría', :only_integer => true
+
   scope :latest, where(:published => true).where('created_at >= ?', Date.today - 30).order('created_at desc')
 
   scope :limited, limit(20)

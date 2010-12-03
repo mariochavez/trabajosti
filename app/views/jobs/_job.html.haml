@@ -5,4 +5,5 @@
     %span.dark en 
     %span.blue #{job.company_name}
     %span{:style => 'float: right;'}
+      %small.dark #{category_name job.category}
       %small #{job.created_at.to_s(:simple)}

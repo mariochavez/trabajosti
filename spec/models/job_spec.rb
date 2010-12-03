@@ -21,6 +21,7 @@ describe Job do
   it { should validate_presence_of :contact, :message => 'Por favor indique como recibir contacto por la oferta' }
   it { should validate_presence_of :email, :message => 'Por favor indique su dirección de correo electrónico' }
   it { should validate_presence_of :company_name, :message => 'Por favor indique el nombre de la compañía' }
+  it { should validate_numericality_of :category, :message => 'Por favor seleccione una categoría', :greater_than => 0, :only_integer => true }
 
 
   it { should have_columns :title, :company_name, :url, :location, :description, :contact, :logo, :token, :published}

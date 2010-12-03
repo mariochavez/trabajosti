@@ -17,6 +17,16 @@ describe JobsController do
       response.should be_success
     end
 
+    context "cuando la oferta es publicada" do
+      it "debe de enviar un email con la informacion de la oferta" do
+        Job.stub!(:save).and_return(true)
+        JobMailer.stub!(:deliver_confirmation)
+
+        JobMailer.should_receive(:deliver_confirmation).with(@job)
+        post :publish, :id => @job.id, :job => {}
+      end
+    end
+
     it "no debe permitir publicar la oferta si ya fue publicada" do
       @job.published = true
       @job.should_not_receive(:save) 
@@ -71,7 +81,6 @@ describe JobsController do
       get :show, :id => @job.id, :token => @job.token
 
       assigns(:job).should be(@job)
-      @job.token.should_not == nil
       response.should be_success
     end
 
@@ -84,7 +93,6 @@ describe JobsController do
   end
 
   describe "PUT 'update'" do
-
     it "no debe permitir actualizar si el token no es el correcto" do
       @job.should_not_receive(:update_attributes)
 
