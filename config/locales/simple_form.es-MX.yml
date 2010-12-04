@@ -1,0 +1,28 @@
+es-MX:
+  simple_form:
+    "yes": 'Sí'
+    "no": 'No'
+
+    required:
+      text: 'requerido'
+      mark: '*'
+
+    error_notification:
+      default_message: 'Han ocurrido algunos errores, por favor revíselos:'
+
+    labels:
+      title: 'Título'
+      category: 'Categoría'
+      location: 'Ubicación'
+      description: 'Descripción'
+      contact: 'Contácto'
+      company_name: 'Compañía'
+      url: 'Sitio web'
+      email: 'Correo electrónico'
+
+    hints:
+      title: '"Desarrollador Sr." o "Administrador de sistemas"'
+      location: '"Tijuana, México" o "Buenos Aires, Argentina"'
+      contact: 'Ej: Enviar CV a trabajos@empresa.com'
+      url: 'Ej: http://www.miempresa.com.mx'
+      email: 'Dirección de correo válida donde recibir confirmación de publicación de la oferta'

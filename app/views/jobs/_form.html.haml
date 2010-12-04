@@ -1,14 +1,14 @@
 = simple_form_for @job do |f|
   = f.hidden_field :token
-  = f.input :title, :hint => '"Desarrollador Sr." o "Administrador de sistemas"'
+  = f.input :title
   = f.input :category, :collection => categories, :prompt => 'Seleccione una opcion'
-  = f.input :location, :hint => '"Tijuana, México" o "Buenos Aires, Argentina"'
+  = f.input :location
   = f.input :description, :wrapper_html => {:class => 'textarea'}
-  = f.input :contact, :hint => 'Ej: Enviar CV a trabajos@empresa.com', :input_html => {:cols => 50, :rows => 5}, :wrapper_html => {:class => 'textarea'}
+  = f.input :contact, :input_html => {:cols => 50, :rows => 5}, :wrapper_html => {:class => 'textarea'}
   = f.input :company_name
   = f.hidden_field :logo
-  = f.input :url, :hint => 'Ej: http://www.miempresa.com.mx'
-  = f.input :email, :hint => 'Dirección de correo válida donde recibir confirmación de publicación de la oferta'
+  = f.input :url
+  = f.input :email
 
   = f.button :submit, @job.published ? 'Actualizar oferta' : 'Paso 2: ver la oferta', :class => 'awesome large button'
 :javascript
