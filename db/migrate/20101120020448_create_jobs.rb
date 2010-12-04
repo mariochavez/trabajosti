@@ -6,8 +6,8 @@ class CreateJobs < ActiveRecord::Migration
       t.string :title
       t.integer :category
       t.string :location
-      t.string :description
-      t.string :contact
+      t.text :description
+      t.text :contact
       t.string :company_name
       t.string :logo
       t.string :url
