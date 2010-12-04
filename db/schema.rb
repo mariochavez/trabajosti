@@ -10,14 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201171939) do
+ActiveRecord::Schema.define(:version => 20101203195431) do
 
   create_table "jobs", :force => true do |t|
     t.string   "title"
     t.integer  "category"
     t.string   "location"
-    t.string   "description"
-    t.string   "contact"
+    t.text     "description",  :limit => 255
+    t.text     "contact",      :limit => 255
     t.string   "company_name"
     t.string   "logo"
     t.string   "url"

@@ -25,6 +25,16 @@ describe JobsController do
         JobMailer.should_receive(:deliver_confirmation).with(@job)
         post :publish, :id => @job.id, :job => {}
       end
+
+      it "debe twittear la oferta" do
+        Job.stub!(:save).and_return(true)
+        JobMailer.stub!(:deliver_confirmation)
+        Twitter.stub!(:update)
+
+        message = "#{@job.company_name} busca #{@job.title} en #{@job.location}; mas info: #{dashboard_url(@job.id)}"
+        Twitter.should_receive(:update).with(message)
+        post :publish, :id => @job.id, :job => {}
+      end
     end
 
     it "no debe permitir publicar la oferta si ya fue publicada" do

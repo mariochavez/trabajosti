@@ -6,13 +6,13 @@
 @light-gray: #888;
 @border: 1px solid @gray;
 
-  .column_def(@width: 540px, @height: 90px, @border: 1px) {
-    float: left;
-    width: @width;
-    height: @height;
-    border-bottom: @border solid @gray;
-    margin: 0 0 20px 0;
-  }
+.column_def(@width: 540px, @height: 90px, @border: 1px) {
+  float: left;
+  width: @width;
+  height: @height;
+  border-bottom: @border solid @gray;
+  margin: 0 0 20px 0;
+}
 
 body {
   margin: 0px;
@@ -206,12 +206,12 @@ body {
 
   .hint {
     color: @light-gray;
-    margin: 0 0 15px 125px;
+    margin: 0 0 15px 124px;
   }
 
   .error {
     color: red;
-    margin: 10px 0 0px 125px;
+    margin: 10px 0 3px 124px;
     display: block;
   }
 
@@ -227,6 +227,21 @@ body {
     width: 108px;
     display: inline-block;
     margin-right: 15px;
+  }
+
+  .textarea {
+
+    label {
+      display: block;
+    }
+
+    .hint {
+      margin: 0 0 30px 0;
+    }
+
+    .error {
+      margin: 20px 0 5px 0;
+    }
   }
 
   input.string, input.password, textarea {
@@ -276,7 +291,7 @@ body {
       margin: 0px;
       display: list-item;
       width: 820px;
-      border-bottom: 1px dotted @gray;
+      border-bottom: 1px dashed @gray;
 
       .location {
         color: @dark-gray;
@@ -303,4 +318,68 @@ body {
       }
     }
   }
+}
+
+.editor {
+  clear: both;
+  min-height: 200px;
+  margin: 15px 0;
+  padding: 5px;
+  outline: none;
+  width: 600px;
+  border: @border;
+  border-bottom-left-radius: 2px 2px;
+  border-bottom-right-radius: 2px 2px;
+  border-top-left-radius: 2px 2px;
+  border-top-right-radius: 2px 2px;
+  background: white url('/images/input-bg.png') no-repeat 0px 0px;
+  -webkit-box-shadow: white 0px 1px 1px;
+  font: normal normal normal 15px/20px 'Helvetica Neue', Arial, Helvetica, Verdana, sans-serif;
+  text-shadow: white 0px 0px 1px;
+  color: @dark-gray;
+
+  p {
+    margin: 0;
+  }
+
+}
+
+.editor_toolbar {
+  float: left;
+  margin: 10px 5px;
+
+  a {
+    text-decoration: none;
+    color: @dark-gray;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: @gray;
+  }
+
+  .selected {
+    span {
+      background-color: @dark-gray;
+    }
+
+    color: @very-light-gray !important;
+  }
+
+  span {
+    background-color: @very-light-gray;
+    border: @border;
+    padding: 4px 7px;
+    margin: 2px;
+    border-bottom-left-radius: 4px 4px;
+    border-bottom-right-radius: 4px 4px;
+    border-top-left-radius: 4px 4px;
+    border-top-right-radius: 4px 4px;
+
+  }
+
+  span:hover {
+    background-color: @dark-gray;
+  }
+
 }

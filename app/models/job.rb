@@ -11,6 +11,8 @@ class Job < ActiveRecord::Base
 
   validates_numericality_of :category, :greater_than => 0, :message => 'Por favor seleccione una categoría', :only_integer => true
 
+  validates_format_of :email, :with => /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/, :message => 'Por favor indique una dirección de correo electrónico válida'
+
   scope :latest, where(:published => true).where('created_at >= ?', Date.today - 30).order('created_at desc')
 
   scope :limited, limit(20)

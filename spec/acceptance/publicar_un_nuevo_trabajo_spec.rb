@@ -108,6 +108,9 @@ feature "Publicar Un Nuevo Trabajo", %q{
   end
 
   scenario "Publicar oferta y recibir confirmacion de tiempo y token para edicion" do
+    Twitter.stub!(:update)
+    Twitter.should_receive(:update)
+
     job = create_and_preview_a_job!
 
     click_link_or_button 'Paso 3: publicar oferta'

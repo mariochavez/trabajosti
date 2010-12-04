@@ -37,7 +37,7 @@ module Jobs
     config.i18n.default_locale = :"es-MX"
 
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery.min rails less-1.0.38.min)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery.min rails less-1.0.38.min jq-wysihat)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

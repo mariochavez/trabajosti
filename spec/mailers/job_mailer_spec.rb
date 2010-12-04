@@ -12,7 +12,7 @@ describe JobMailer do
     end
 
     it "genera el cuerpo" do
-      mail.body.encoded.should match("Hi")
+      mail.body.encoded.should =~ /#{job.title}/
     end
   end
 

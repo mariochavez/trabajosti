@@ -64,8 +64,11 @@ class JobsController < InheritedResources::Base
       return redirect_to root_path
     end
 
-    puts '=============================='
     JobMailer.published(@job).deliver
+    
+    twitter_message = "#{@job.company_name} busca #{@job.title} en #{@job.location}; mas info: #{dashboard_url(@job.id)}"
+    Twitter.update twitter_message
+
     @job.publish!
   end
 
