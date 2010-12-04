@@ -12,7 +12,7 @@
   %span
     = link_to @job.url, @job.url
   #description
-    = @job.description
+    = raw @job.description
   .contact
     = @job.contact
 
