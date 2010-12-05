@@ -4,3 +4,10 @@ es-MX:
   service_of: 'empleosTI es un servicio de'
   follow_us: 'Síguenos en Twitter'
   to_know_new: 'para saber cuando una nueva oferta es publicada.'
+
+  all_offers: 'Todas las ofertas dispoibles'
+  recent_offers: 'Ofertas recientes'
+  published: 'publicadas'
+  new_offer: 'Nueva oferta'
+  back_to_list: 'Regresar a página principal' 
+  see_all_offers: 'Ver todas las %{total} ofertas'

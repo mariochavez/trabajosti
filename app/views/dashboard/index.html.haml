@@ -2,21 +2,21 @@
   .column-mini
     %h1 
       - if @action == 'all'
-        Todas las ofertas dispoibles 
+        = t :all_offers 
       - else
-        Ofertas recientes
+        = t :recent_offers 
       -if !@jobs.empty?
         %small
-          publicadas
+          = t :published 
           = time_ago_in_words @jobs.first.created_at
   .column-mini-right
-    = link_to 'Nueva oferta', new_job_path, :class => 'awesome large blue'
+    = link_to t(:new_offer), new_job_path, :class => 'awesome large blue'
   .clear
 %div #{flash[:error]||flash[:notice]}
 %ul.listing
   = render @jobs
 - if @action == 'all'
-  = link_to "Regresar a página principal", root_path
+  = link_to t(:back_to_list), root_path
 - else
   - if @total > 20
-    = link_to "Ver todas las #{@total} ofertas", all_path
+    = link_to t(:see_all_offers, @total), all_path
