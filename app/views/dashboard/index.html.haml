@@ -19,4 +19,4 @@
   = link_to t(:back_to_list), root_path
 - else
   - if @total > 20
-    = link_to t(:see_all_offers, @total), all_path
+    = link_to t(:see_all_offers, :total => @total), all_path
