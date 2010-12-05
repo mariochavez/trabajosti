@@ -1,5 +1,9 @@
 class JobsController < InheritedResources::Base
-  actions :new, :create, :show, :edit, :update
+  actions :index, :new, :create, :show, :edit, :update
+
+  def index
+    redirect_to root_url  
+  end
 
   def create
     create! do |success, failure|
@@ -8,7 +12,8 @@ class JobsController < InheritedResources::Base
   end
 
   def show
-    @job = Job.find params[:id]
+    find_job!
+
     token = params[:token]
 
     if !valid_token? token
@@ -20,7 +25,8 @@ class JobsController < InheritedResources::Base
   end
 
   def edit
-    @job = Job.find params[:id]
+    find_job!
+
     token = params[:token]
 
     if !valid_token? token
@@ -36,7 +42,8 @@ class JobsController < InheritedResources::Base
   end
 
   def update
-    @job = Job.find params[:id]
+    find_job!
+
     token = params[:job][:token]
 
     if !valid_token? token
@@ -57,7 +64,7 @@ class JobsController < InheritedResources::Base
   end
 
   def publish
-    @job = Job.find params[:id]  
+    find_job! 
 
     if @job.published
       flash[:error] = 'Esta oferta ya fué publicada y no es posible publicarla nuevamente'
@@ -76,5 +83,16 @@ class JobsController < InheritedResources::Base
   def valid_token? token
     return true if @job.token == token
     false
+  end
+
+  def find_job!
+    @job = nil
+
+    if Job.exists?(params[:id])
+      @job = Job.find(params[:id]) 
+    else
+      flash[:error] = 'Oferta no encontrada.'
+      return redirect_to root_path
+    end
   end
 end

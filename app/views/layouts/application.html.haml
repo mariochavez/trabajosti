@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Trabajos TI - Decisiones Inteligentes
+    %title #{t(:title)}
     = stylesheet_link_tag :all
     = stylesheet_link_tag 'application.less', :rel => "stylesheet/less"
     = javascript_include_tag :defaults
@@ -13,8 +13,8 @@
           #logo
             = link_to image_tag('empleosTI.png'), root_path
         .column-right
-          #note
-            La mejor opción para encontrar ese trabajo especial
+          #note #{t(:slogan)}
+            
     #page-top
       #page
         .content
@@ -27,4 +27,15 @@
             #sidebar
               = content_for :sidebar
       #footer
-        %span.blue empleosTI es un servicio de #{link_to 'Decisiones Inteligentes', 'http://www.decisionesinteligentes.com'}
+        .column{:style => 'border: 0px;'} 
+          .blue{:style => 'height:30px; padding: 12px 5px 0px 20px;float:left;'}
+            = t(:service_of) 
+          %div{:style => 'height:30px;float:left;'}
+            = link_to 'http://www.decisionesinteligentes.com', :target => '_blank' do
+              = image_tag 'mini-dein2.png', :width => '200'
+          .clear
+        .column-right{:style => 'border: 0px;'}
+          .blue{:style => 'height:30px; padding: 12px 5px 0px 20px;'}
+            = t :follow_us 
+            = link_to '@empleosti_dein', 'http://twitter.com/empleosti_dein', :target => '_blank'
+            = t :to_know_new 

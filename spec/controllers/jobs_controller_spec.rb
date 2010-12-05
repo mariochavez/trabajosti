@@ -18,19 +18,18 @@ describe JobsController do
     end
 
     context "cuando la oferta es publicada" do
-      it "debe de enviar un email con la informacion de la oferta" do
+      before(:each) do
         Job.stub!(:save).and_return(true)
-        JobMailer.stub!(:deliver_confirmation)
+        JobMailer.stub!(:deliver_mail)
+        Twitter.stub!(:update)
+      end
 
-        JobMailer.should_receive(:deliver_confirmation).with(@job)
+      it "debe de enviar un email con la informacion de la oferta" do
+        JobMailer.should_receive(:deliver_mail).once
         post :publish, :id => @job.id, :job => {}
       end
 
       it "debe twittear la oferta" do
-        Job.stub!(:save).and_return(true)
-        JobMailer.stub!(:deliver_confirmation)
-        Twitter.stub!(:update)
-
         message = "#{@job.company_name} busca #{@job.title} en #{@job.location}; mas info: #{dashboard_url(@job.id)}"
         Twitter.should_receive(:update).with(message)
         post :publish, :id => @job.id, :job => {}
