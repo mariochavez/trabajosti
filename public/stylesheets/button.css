@@ -2,7 +2,7 @@
   background: #222 url('/images/overlay-button.png') repeat-x; 
   display: inline-block; 
   padding: 5px 10px 6px; 
-  color: #fff; 
+  color: #fff !important; 
   text-decoration: none;
   -moz-border-radius: 5px; 
   -webkit-border-radius: 5px;
