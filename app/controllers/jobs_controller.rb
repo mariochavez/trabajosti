@@ -73,8 +73,12 @@ class JobsController < InheritedResources::Base
 
     JobMailer.published(@job).deliver
     
-    twitter_message = "#{@job.company_name} busca #{@job.title} en #{@job.location}; mas info: #{dashboard_url(@job.id)}"
-    Twitter.update twitter_message
+    begin
+      twitter_message = "#{@job.company_name} busca #{@job.title} en #{@job.location}; mas info: #{dashboard_url(@job.id)}"
+      Twitter.update twitter_message
+    rescue
+      logger.error 'Twitter no pudo ser contactado'
+    end
 
     @job.publish!
   end
