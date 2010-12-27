@@ -2,19 +2,6 @@ require 'spec_helper'
 
 describe Job do
 
-  def self.create_and_publish_40_jobs!
-    40.times do
-      job = Factory.create :job
-      job.publish!
-    end
-  end
-
-  def self.create_40_jobs!
-    40.times do
-      job = Factory.create :job
-    end
-  end
-
   it { should validate_presence_of :title, :message => 'Por favor indique un título' }
   it { should validate_presence_of :location, :message => 'Por favor indique la ubicación' }
   it { should validate_presence_of :description, :message => 'Por favor indique una descripción' }
@@ -24,42 +11,54 @@ describe Job do
   it { should validate_numericality_of :category, :message => 'Por favor seleccione una categoría', :greater_than => 0, :only_integer => true }
   it { should allow_values_for :email, :with => /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/, :message => 'Por favor indique una dirección de correo electrónico válida' }
 
-
   it { should have_columns :title, :company_name, :url, :location, :description, :contact, :logo, :token, :published}
 
-  describe "Publicar oferta marcandolas como publicadas" do
-    job = Factory.create :job
-    job.publish!
-    job.published.should == true
-  end
+  describe "Acciones y consultas" do
 
-  describe "Generar token de edicion para ofertas nuevas" do
-    job = Factory.create :job
-    job.save
-    job.token.should_not == nil
-  end
+    let(:job) do
+      job = Factory.build(:job, :token => nil)
+    end
 
-  describe "Leer las ultimas 20 ofertas" do
-    Job.delete_all
-    create_and_publish_40_jobs!
+    before(:all) do
+      40.times do
+        job = Factory.create :job
+        job.publish!
+      end
+  
+      40.times do
+        job = Factory.create :job
+      end
+    end
 
-    jobs = Job.latest.limited.all
-    jobs.count.should == 20
-  end
+    after(:all) do
+      Job.delete_all
+    end
 
-  describe "Leer el resto de las ofertas" do
-    Job.delete_all
-    create_and_publish_40_jobs!
+    it "Publicar oferta marcandolas como publicadas" do
+      job.save
+      job.publish!
 
-    jobs = Job.latest.all
-    jobs.count.should == 40
-  end
-
-  describe "No debe leer ofertas si no estan publicadas" do
-    Job.delete_all
-    create_40_jobs!
-
-    jobs = Job.latest.all
-    jobs.count.should == 0
+      job.published.should == true
+    end
+  
+    it "Generar token de edicion para ofertas nuevas" do
+      job.save
+      job.token.should_not == nil
+    end
+  
+    it "Leer las ultimas 20 ofertas" do
+      jobs = Job.latest.limited.all
+      jobs.count.should == 20
+    end
+  
+    it "Leer el resto de las ofertas" do
+      jobs = Job.latest.all
+      jobs.count.should == 40
+    end
+  
+    it "No debe leer ofertas si no estan publicadas" do
+      jobs = Job.latest.all
+      jobs.count.should == 40
+    end
   end
 end

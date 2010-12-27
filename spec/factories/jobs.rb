@@ -1,6 +1,7 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 Factory.define :job do |f|
+  f.id
   f.title "Desarrollador Rails"
   f.category 1
   f.location "Tijuana, BC, Mexico"
@@ -10,4 +11,10 @@ Factory.define :job do |f|
   f.logo "cool.png"
   f.url "http://www.coolrails.com"
   f.email "jobs@mail.com"
+  f.published false
+  f.token "SUPERHIDDENTOKEN"
+end
+
+Factory.sequence :id do |s|
+  "#{s}"
 end
