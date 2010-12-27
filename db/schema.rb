@@ -10,22 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203195431) do
+ActiveRecord::Schema.define(:version => 20101227035011) do
 
   create_table "jobs", :force => true do |t|
     t.string   "title"
     t.integer  "category"
     t.string   "location"
-    t.text     "description",  :limit => 255
-    t.text     "contact",      :limit => 255
+    t.text     "description",       :limit => 255
+    t.text     "contact",           :limit => 255
     t.string   "company_name"
-    t.string   "logo"
     t.string   "url"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
     t.boolean  "published"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
 end

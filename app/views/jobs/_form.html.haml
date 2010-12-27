@@ -1,4 +1,4 @@
-= simple_form_for @job do |f|
+= simple_form_for @job, :html => { :multipart => true } do |f|
   = f.hidden_field :token
   = f.input :title
   = f.input :category, :collection => categories, :prompt => 'Seleccione una opcion'
@@ -6,7 +6,7 @@
   = f.input :description, :wrapper_html => {:class => 'textarea'}
   = f.input :contact, :input_html => {:cols => 50, :rows => 5}, :wrapper_html => {:class => 'textarea'}
   = f.input :company_name
-  = f.hidden_field :logo
+  = f.input :logo, :as => :file, :hint => "El archivo no debe ser mayor a 300kb"
   = f.input :url
   = f.input :email
 

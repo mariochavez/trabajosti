@@ -49,6 +49,7 @@ feature "Publicar Un Nuevo Trabajo", %q{
 
     job = Factory.build :job
 
+    logo = File.join(::Rails.root, 'spec/fixtures/logo.png')
     fill_the_following(
       'job_title' => job.title,
       'job_location' => job.location,
@@ -58,6 +59,7 @@ feature "Publicar Un Nuevo Trabajo", %q{
       'job_url' => job.url,
       'job_email' => job.email
     )
+    attach_file('job_logo', logo)
 
     select 'Programación', :from => 'job_category'
 
@@ -73,6 +75,7 @@ feature "Publicar Un Nuevo Trabajo", %q{
     page.should have_css 'h3', :text => job.location
     page.should have_css 'div', :text => job.description
     page.should have_css 'div', :text => job.contact
+    page.should have_css '#company_logo'
 
     page.should have_css 'input[type="submit"]'
     page.should have_css 'a', :text => 'Realizar cambios'

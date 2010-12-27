@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.2'
 
 gem 'haml'
-gem 'paperclip', '2.3.3'
+gem 'paperclip', '2.3.8'
 gem 'simple_form'
 gem 'inherited_resources'
 gem 'hpricot'

@@ -4,3 +4,4 @@ log/*.log
 tmp/**/*
 *.un~
 *.swp
+public/system/*

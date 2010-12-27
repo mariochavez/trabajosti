@@ -17,6 +17,8 @@ class Job < ActiveRecord::Base
 
   scope :limited, limit(20)
 
+  has_attached_file :logo, :styles => { :medium => "200x50>" }
+
   def publish!
     self.published = true
     self.save

@@ -11,6 +11,9 @@
     = @job.title
   %h3
     = category_name @job.category
+  -if !@job.nil?
+    #company_logo
+      = image_tag @job.logo.url(:medium)
   %h2
     = @job.company_name
   %h3

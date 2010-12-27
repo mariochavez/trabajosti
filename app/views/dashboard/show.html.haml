@@ -5,6 +5,9 @@
     = link_to 'Ver ofertas', root_path, :class => 'awesome large blue'
   .clear
 #preview
+  -if !@job.logo.nil?
+    .top_logo
+      = image_tag @job.logo.url(:medium)
   %h2 #{@job.company_name}
   %h3
     Ubicación:

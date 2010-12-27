@@ -11,7 +11,7 @@ describe Job do
   it { should validate_numericality_of :category, :message => 'Por favor seleccione una categoría', :greater_than => 0, :only_integer => true }
   it { should allow_values_for :email, :with => /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/, :message => 'Por favor indique una dirección de correo electrónico válida' }
 
-  it { should have_columns :title, :company_name, :url, :location, :description, :contact, :logo, :token, :published}
+  it { should have_columns :title, :company_name, :url, :location, :description, :contact, :token, :published}
 
   describe "Acciones y consultas" do
 
