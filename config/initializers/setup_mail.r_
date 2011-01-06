@@ -1,0 +1,12 @@
+ActionMailer::Base.smtp_settings = {
+  :address  => # IP address,
+  :port     => # Port No,
+  :domain   => # Domain name,
+  :user_name => # User account,
+  :password   => # Password,
+  :autentication => 'plain',
+  :enable_starttls_auto => true
+}
+
+ActionMailer::Base.default_url_options[:host] = # Host name
+ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?

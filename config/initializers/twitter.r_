@@ -1,0 +1,6 @@
+Twitter.configure do |c|
+	c.consumer_key = # We should get this from twitter
+	c.consumer_secret = # We should get this from twitter
+	c.oauth_token = # We should get this from twitter
+	c.oauth_token_secret = # We should get this from twitter
+end
