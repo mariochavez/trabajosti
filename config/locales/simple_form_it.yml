@@ -1,0 +1,29 @@
+it:
+  simple_form:
+    "yes": 'Si'
+    "no": 'No'
+
+    required:
+      text: 'richiesto'
+      mark: '*'
+
+    error_notification:
+      default_message: 'Sono avvenuti alcuni errori, ti preghiamo di verificare quanto inserito:'
+
+    labels:
+      title: 'Titolo'
+      category: 'Categoria'
+      location: 'Ubicación'
+      description: 'Descrizione'
+      contact: 'Contatto'
+      company_name: 'Azienda'
+      url: 'Sito Web'
+      email: 'Indirizzo di Posta Elettronica'
+
+    hints:
+      title: '"Sviluppatore Sig./ra" o "Amministratore di Sistema"'
+      location: '"Tijuana, México" o "Buenos Aires, Argentina"'
+      contact: 'Es: Inviare il CV a trabajos@empresa.com'
+      url: 'Es: http://www.miempresa.com.mx'
+      email: 'Indirizzo di Posta Elettronica valido per ricevere le notifiche di conferma per la pubblicazione della tua offerta'
+
