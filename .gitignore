@@ -5,3 +5,6 @@ tmp/**/*
 *.un~
 *.swp
 public/system/*
+
+twitter.rb
+setup_mail.rb
