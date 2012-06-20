@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.2'
+gem 'rails', '3.2.6'
 
 gem 'haml'
-gem 'paperclip', '2.3.8'
+gem 'paperclip', '~> 3.1.2'
 gem 'simple_form'
 gem 'inherited_resources'
 gem 'hpricot'
@@ -15,16 +15,14 @@ group :development do
   gem 'rails3-generators'
   gem 'haml-rails'
   gem 'jquery-rails'
-  gem 'ruby-debug'
   gem 'twitter_oauth'
 end
 
 group :test, :development do
-  gem 'rspec', '>=2.2.0'
-  gem 'rspec-rails', '>=2.2.0'
+  gem 'rspec'
+  gem 'rspec-rails'
   gem 'remarkable_activerecord'
   gem 'factory_girl_rails'
-  gem 'steak', '>= 1.0.0.rc.3'
+  gem 'steak'
   gem 'capybara'
-  gem 'launchy'
 end
